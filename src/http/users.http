@@ -1,0 +1,40 @@
+# baseURL
+@baseURL = http://localhost:3000
+
+###
+# Find All Streams
+GET {{ baseURL }}/streams
+
+###
+# Find Stream By Id
+GET {{ baseURL }}/streams/1
+
+###
+# Create Stream
+POST {{ baseURL }}/streams
+Content-Type: application/json
+
+{
+    "name": "example@email.com",
+    "logo": "password",
+    "group": "password",
+    "url": "password",
+    "raw": "password"
+}
+
+###
+# Modify Stream By Id
+PUT {{ baseURL }}/streams/1
+Content-Type: application/json
+
+{
+    "name": "example@email.com",
+    "logo": "password",
+    "group": "password",
+    "url": "password",
+    "raw": "password"
+}
+
+###
+# Delete Stream By Id
+DELETE {{ baseURL }}/streams/1

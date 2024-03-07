@@ -1,0 +1,120 @@
+tags:
+- name: streams
+  description: streams API
+
+paths:
+# [GET] streams
+  /streams:
+    get:
+      tags:
+      - streams
+      summary: Find All Streams
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+# [POST] streams
+    post:
+      tags:
+      - streams
+      summary: Add Stream
+      parameters:
+      - name: body
+        in: body
+        description: stream Data
+        required: true
+        schema:
+          $ref: '#/definitions/streams'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] streams/id
+  /streams/{id}:
+    get:
+      tags:
+      - streams
+      summary: Find Stream By Id
+      parameters:
+      - name: id
+        in: path
+        description: Stream Id
+        required: true
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [PUT] streams/id
+    put:
+      tags:
+      - streams
+      summary: Update Stream By Id
+      parameters:
+      - name: id
+        in: path
+        description: stream Id
+        required: true
+      - name: body
+        in: body
+        description: stream Data
+        required: true
+        schema:
+          $ref: '#/definitions/streams'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [DELETE] streams/id
+    delete:
+      tags:
+      - streams
+      summary: Delete Stream By Id
+      parameters:
+      - name: id
+        in: path
+        description: stream Id
+        required: true
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# definitions
+definitions:
+  streams:
+    type: object
+    required:
+        - email
+        - password
+    properties:
+      email:
+        type: string
+        description: stream Email
+      password:
+        type: string
+        description: stream Password
+
+schemes:
+ - https
+ - http
