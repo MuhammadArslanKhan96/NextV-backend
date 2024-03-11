@@ -13,15 +13,15 @@ import { dbConnection } from '@database';
 import { Routes } from '@interfaces/routes.interface';
 import { ErrorMiddleware } from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
-// import { convertToObjects } from './utils/convertStringToStream'
-// import { listText } from './constants/strings'
-import { StreamService } from './services/streams.service'
+import { convertToObjects } from './utils/convertStringToStream';
+import { listText } from './constants/strings';
+import { StreamService } from './services/streams.service';
 
 export class App {
   public app: express.Application;
   public env: string;
   public port: string | number;
-  streamService = new StreamService()
+  streamService = new StreamService();
 
   constructor(routes: Routes[]) {
     this.app = express();
@@ -50,15 +50,15 @@ export class App {
 
   private async connectToDatabase() {
     await dbConnection();
-    // logger.info(`============ Adding Data =============`);
-    // const data = convertToObjects(listText);
-    // logger.info(`🚀 Total Data Amount: ${data.length}`);
-    // logger.info(`======================================`);
-    // for (const stream of data) {
-    //   this.streamService.createStream(stream).catch(err => console.log(err.message));
-    // }
-    // logger.info(`============ Data Added ==============`);
-    // logger.info(`======================================`);
+    logger.info(`============ Adding Data =============`);
+    const data = convertToObjects(listText);
+    logger.info(`🚀 Total Data Amount: ${data.length}`);
+    logger.info(`======================================`);
+    for (const stream of data) {
+      this.streamService.createStream(stream).catch(err => console.log(err.message));
+    }
+    logger.info(`============ Data Added ==============`);
+    logger.info(`======================================`);
   }
 
   private initializeMiddlewares() {
