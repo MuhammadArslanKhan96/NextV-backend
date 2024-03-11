@@ -1,5 +1,5 @@
 import { Service } from 'typedi';
-import { HttpException } from '@exceptions/httpException';
+import { HttpException } from '@exceptions/HttpException';
 import { Stream } from '@interfaces/streams.interface';
 import { StreamModel } from '@models/streams.model';
 
